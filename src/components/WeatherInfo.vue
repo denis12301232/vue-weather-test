@@ -46,7 +46,10 @@ onMounted(() =>
 
 watchDebounced(
   () => citiesQuery.q,
-  () => citiesQuery.q && cities.execute(),
+  () => {
+    cities.canAbort.value && cities.abort();
+    citiesQuery.q && cities.execute();
+  },
   { debounce: 500, maxWait: 1000 },
 );
 
