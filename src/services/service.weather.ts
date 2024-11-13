@@ -24,7 +24,7 @@ export default abstract class WeatherService {
   static cities(q: Weather.Cities.Request, options: UseFetchOptions = {}) {
     const query = computed(
       () =>
-        `http://api.openweathermap.org/geo/1.0/direct?${new URLSearchParams(q).toString()}&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`,
+        `https://api.openweathermap.org/geo/1.0/direct?${new URLSearchParams(q).toString()}&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`,
     );
 
     return useFetch(query, options).json<Weather.Cities.Response[]>();
